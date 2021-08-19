@@ -36,28 +36,21 @@
         </Viewbox>
         <StackPanel Grid.Row="1" >
 			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
 					<ColumnDefinition/>
 					<ColumnDefinition/>
 					<ColumnDefinition/>
-					<ColumnDefinition Width="80"/>
-					<ColumnDefinition Width="80"/>
-					<ColumnDefinition Width="80"/>
-					<ColumnDefinition Width="80"/>
+					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
-				<Label Content="width:" Grid.Row="0" Grid.Column="0" Width="45" Height="30" HorizontalAlignment="Left"/>
+				<!--<Label Content="width:" Grid.Row="0" Grid.Column="0" Width="45" Height="30" HorizontalAlignment="Left"/>
 				<TextBox Text="{Binding Width}" Grid.Row="0" Grid.Column="1" TextAlignment="Center" VerticalContentAlignment="Center" />
 				<Label Content="height:" Grid.Row="1" Grid.Column="0" Width="50" Height="30" HorizontalAlignment="Left"/>
-				<TextBox Text="{Binding Height}" Grid.Row="1" Grid.Column="1" TextAlignment="Center" VerticalContentAlignment="Center" />
-				<Button Content="Prepare" Grid.Row="0" Grid.Column="4" Command="{Binding Prepare}"/>
-				<Button Content="1 Step" Grid.Row="1" Grid.Column="4" Command="{Binding StepOneTime}"/>
-				<Button Content="5 Steps" Grid.Row="1" Grid.Column="5" Command="{Binding StepFiveTimes}"/>
-				<Button Content="Solve" Grid.Row="1" Grid.Column="6" Command="{Binding Solve}"/>
+				<TextBox Text="{Binding Height}" Grid.Row="1" Grid.Column="1" TextAlignment="Center" VerticalContentAlignment="Center" />-->
+				<Button Content="Reset" Grid.Row="0" Grid.Column="0" Command="{Binding Reset}"/>
+				<Button Content="1 Step" Grid.Column="2" Command="{Binding StepOneTime}"/>
+				<Button Content="5 Steps" Grid.Column="3" Command="{Binding StepFiveTimes}"/>
+				<Button Content="Solve" Grid.Column="4" Command="{Binding Solve}"/>
 			</Grid>
 		</StackPanel>
     </Grid>
