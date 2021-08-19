@@ -22,19 +22,13 @@ namespace Labyrinth
   {
     private Drawer mDraw = new Drawer();
 
-    private Field[,] mFields;
-
-    private FieldCoordinate mFigurePosition;
-
-    private Field mStartField = new Field(-1, -1);
-
-    private readonly Queue<Field> mFieldsToCheck = new Queue<Field>();
-
-    private readonly List<Field> mShortestDistance = new List<Field>();
-
     private readonly GamePreparer mGamePreparer;
 
-    private Field mFieldExit;
+    private Pathfinder mPathfinder;
+
+    private Field[,] mFields;
+
+    private FieldCoordinate mFigurePosition = new FieldCoordinate(-1, -1);
 
     private int mHeight = 10;
 
@@ -45,8 +39,6 @@ namespace Labyrinth
     private bool mIsExited = true;
 
     private Func<Point> mGetPosition;
-
-    private Pathfinder mPathfinder;
 
     public ProcedureOrganiser(Canvas aBoardControl, Func<Point> aGetMousePosition)
     {
@@ -81,7 +73,7 @@ namespace Labyrinth
 
     public bool CanExecuteSetStartPos(object aParameter)
     {
-      return !IsExited && (mStartField.X < 0) && (mStartField.X < 0);
+      return !IsExited && (mFigurePosition.X < 0) && (mFigurePosition.X < 0);
     }
 
     public void ExecuteSetStartPos(object aParameter)
@@ -102,7 +94,7 @@ namespace Labyrinth
         if (mFigurePosition.X >= mWidth || mFigurePosition.X < 0 || mFigurePosition.Y >= mHeight
             || mFigurePosition.Y < 0)
         {
-          mStartField = new Field(-1, -1);
+          mFigurePosition = new FieldCoordinate(-1, -1);
           // start point is outside the maze
           return;
         }
@@ -110,7 +102,6 @@ namespace Labyrinth
         mDraw.DrawFigure(mFigurePosition);
 
         // set to start field
-        mStartField = mFields[mFigurePosition.X, mFigurePosition.Y];
         mPathfinder = new Pathfinder(this, Width, Height, mFields, mFigurePosition, mGamePreparer.mDraw);
       }
       catch (Exception)
@@ -126,10 +117,8 @@ namespace Labyrinth
       mHeight = Height;
       mWidth = Width;
 
-      mFieldsToCheck.Clear();
-      mShortestDistance.Clear();
       IsExited = false;
-      mStartField = new Field(-1, -1);
+      mFigurePosition = new FieldCoordinate(-1, -1);
 
       mRandom = new Random();
       mFigurePosition = mGamePreparer.InitFigure(mWidth, mHeight, mRandom);
@@ -154,7 +143,7 @@ namespace Labyrinth
 
     public bool CanExecuteMove(object aParameter)
     {
-      return !IsExited && (mStartField.X > -1) && (mStartField.Y > -1);
+      return !IsExited && (mFigurePosition.X > -1) && (mFigurePosition.Y > -1);
     }
 
     private void ExecuteSolve(object aParameter)

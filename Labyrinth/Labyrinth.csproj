@@ -86,15 +86,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Drawer.cs" />
-    <Compile Include="FieldCoordinate.cs" />
+    <Compile Include="Helpers\Drawer.cs" />
+    <Compile Include="Helpers\FieldCoordinate.cs" />
     <Compile Include="GamePreparer.cs" />
-    <Compile Include="MockOrganiser.cs" />
+    <Compile Include="Mocks\MockOrganiser.cs" />
     <Compile Include="ProcedureOrganiser.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="RelayCommand.cs" />
+    <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Pathfinder.cs" />
-    <Compile Include="WallLocation.cs" />
+    <Compile Include="Helpers\WallLocation.cs" />
     <Page Include="LabyrinthView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,7 +103,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Field.cs" />
+    <Compile Include="Helpers\Field.cs" />
     <Compile Include="LabyrinthView.xaml.cs">
       <DependentUpon>LabyrinthView.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -61,8 +61,9 @@ namespace Labyrinth
       if (!mPaths.Any())
       {
         mPaths.Enqueue(mCurrentField);
+        TryToExit(mCurrentField.X, mCurrentField.Y);
       }
-      
+
       foreach (Field farthest in mPaths)
       {
         foreach (Field neighbour in farthest.GetNeighbours())
@@ -86,29 +87,27 @@ namespace Labyrinth
 
         TryToExit(mCurrentField.X, mCurrentField.Y);
 
-        if (IsExited)
+        mDrawer.FillVisitedField(mCurrentField.X, mCurrentField.Y, mCurrentField.DistanceStart, Brushes.OrangeRed);
+      }
+
+      if (IsExited)
+      {
+        // mark shortest way
+        GetShortestWay(mExitField);
+
+        foreach (Field field in mShortestDistance)
         {
-          // mark shortest way
-          GetShortestWay(mExitField);
-
-          foreach (Field field in mShortestDistance)
-          {
-            mDrawer.FillVisitedField(field.X, field.Y, field.DistanceStart, Brushes.Green);
-          }
-
-          // mark start
-          mDrawer.FillVisitedField(mStartField.X, mStartField.Y, mStartField.DistanceStart, Brushes.DarkBlue);
-
-          // mark exit
-          mDrawer.FillVisitedField(mExitField.X, mExitField.Y, mExitField.DistanceStart, Brushes.LightSeaGreen);
-
-          // mark figure
-          mDrawer.DrawFigure(mFigurePosition);
+          mDrawer.FillVisitedField(field.X, field.Y, field.DistanceStart, Brushes.Green);
         }
-        else
-        {
-          mDrawer.FillVisitedField(mCurrentField.X, mCurrentField.Y, mCurrentField.DistanceStart, Brushes.OrangeRed);
-        }
+
+        // mark start
+        mDrawer.FillVisitedField(mStartField.X, mStartField.Y, mStartField.DistanceStart, Brushes.DarkBlue);
+
+        // mark exit
+        mDrawer.FillVisitedField(mExitField.X, mExitField.Y, mExitField.DistanceStart, Brushes.LightSeaGreen);
+
+        // mark figure
+        mDrawer.DrawFigure(mFigurePosition);
       }
     }
 
