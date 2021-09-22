@@ -43,6 +43,10 @@
 					<ColumnDefinition/>
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
 				<!--<Label Content="width:" Grid.Row="0" Grid.Column="0" Width="45" Height="30" HorizontalAlignment="Left"/>
 				<TextBox Text="{Binding Width}" Grid.Row="0" Grid.Column="1" TextAlignment="Center" VerticalContentAlignment="Center" />
 				<Label Content="height:" Grid.Row="1" Grid.Column="0" Width="50" Height="30" HorizontalAlignment="Left"/>
@@ -51,6 +55,7 @@
 				<Button Content="1 Step" Grid.Column="2" Command="{Binding StepOneTime}"/>
 				<Button Content="5 Steps" Grid.Column="3" Command="{Binding StepFiveTimes}"/>
 				<Button Content="Solve" Grid.Column="4" Command="{Binding Solve}"/>
+				<Label Grid.Row="1" Content="Click Reset to setup Maze | Click inside Maze to set your starting position."  Grid.ColumnSpan="5"/>
 			</Grid>
 		</StackPanel>
     </Grid>
